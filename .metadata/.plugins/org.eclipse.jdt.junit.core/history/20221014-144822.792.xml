@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BoardRepositoryTest (5)" project="Hiweb3" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.boot.repository.BoardRepositoryTest" time="0.416" displayname="BoardRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.BoardRepositoryTest]">
+    <testcase name="testSearch1" classname="com.boot.repository.BoardRepositoryTest" time="0.416" displayname="testSearch1()" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.BoardRepositoryTest]/[method:testSearch1()]"/>
+  </testsuite>
+</testrun>

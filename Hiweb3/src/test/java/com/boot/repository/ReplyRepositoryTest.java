@@ -21,6 +21,7 @@ public class ReplyRepositoryTest {
 	
 	
 	//300개의 댓글 생성
+	/*
 	@Test
 	public void insertReply() {
 		IntStream.rangeClosed(1, 300).forEach(i ->{
@@ -37,12 +38,12 @@ public class ReplyRepositoryTest {
 			replyRepo.save(reply);
 		});
 	}
-	
+	*/
 	
 
 	//댓글 조회
-	/*
-   @Transactional
+	
+   @Transactional	//지연 로딩
    @Test
    public void readRely() {
       Optional<Reply> result = replyRepo.findById(1L);
@@ -52,9 +53,10 @@ public class ReplyRepositoryTest {
       System.out.println(reply);
       System.out.println(reply.getBoard());
    }
-   */
+   
 	
 	//댓글 목록
+   /*
 	@Test
 	public void testListByBoard() {
 		//100번 게시글 생성
@@ -65,7 +67,7 @@ public class ReplyRepositoryTest {
 		replyList.forEach(reply -> System.out.println(reply));
 		
 	}
-	
+	*/
 	
 	
 	

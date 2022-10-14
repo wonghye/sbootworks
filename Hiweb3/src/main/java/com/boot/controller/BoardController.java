@@ -70,6 +70,16 @@ public class BoardController {
 	   return "redirect:list";
    }
 	
+   
+   //글 삭제
+ 	@GetMapping("/delete")
+ 	public String delete(Long bno) {
+ 	      boardService.remove(bno);
+ 	      return "redirect:list";
+   }
+ 	
+ 	//글 수정
+ 	
 	
 	/*
 	//게시글 목록 보기

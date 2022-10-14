@@ -60,6 +60,12 @@ public class BoardServiceImpl implements BoardService {
 	      return entityToDto((Board)arr[0],
 	            (Member)arr[1], (Long)arr[2]);
 	   }
+
+	//게시글 삭제
+	@Override
+	public void remove(Long bno) {
+		boardRepo.deleteById(bno);
+	}
 	
 	
 
