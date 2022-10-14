@@ -1,0 +1,13 @@
+package com.boot.service;
+
+import java.util.List;
+
+import com.boot.dto.BoardDto;
+import com.boot.entity.Board;
+
+public interface BoardService {
+	
+	//게시글 등록
+	Long register(BoardDto dto);
+	
+}

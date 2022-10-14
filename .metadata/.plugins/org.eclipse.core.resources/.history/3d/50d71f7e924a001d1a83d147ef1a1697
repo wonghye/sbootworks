@@ -1,0 +1,25 @@
+package com.boot.service;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.boot.dto.BoardDto;
+
+@SpringBootTest
+public class BoardServiceTest {
+
+	@Autowired
+	private BoardService boardService;
+	
+	@Test
+	public void testRegister() {
+		BoardDto dto = BoardDto.builder()
+				.title("한글 테스트")
+				.content("테스트 내용입니다.")
+				.writerEmail("user50@aaa.com")
+				.build();
+		
+		boardService.register(dto);
+	}
+}

@@ -1,0 +1,23 @@
+package com.boot.repository;
+
+import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class ReplyRepositoryTest {
+
+	@Autowired
+	ReplyRepository replyRepo;
+	
+	//300개의 댓글 생성
+	@Test
+	public void insertReply() {
+		IntStream.rangeClosed(1, 300).forEach(i ->{
+			//게시글 번호 bno를 랜덤하게 생성 1부터 100까지
+			Long bno = (long) (Math.random() * 100 + 1);
+		});
+	}
+}

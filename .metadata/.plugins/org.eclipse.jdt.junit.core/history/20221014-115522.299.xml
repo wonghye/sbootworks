@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberRepositoryTest (1)" project="Hiweb3" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.boot.repository.MemberRepositoryTest" time="0.925" displayname="MemberRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.MemberRepositoryTest]">
+    <testcase name="insertMember" classname="com.boot.repository.MemberRepositoryTest" time="0.952" displayname="insertMember()" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.MemberRepositoryTest]/[method:insertMember()]"/>
+  </testsuite>
+</testrun>

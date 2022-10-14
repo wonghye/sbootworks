@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Dev\bootworks\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+244617558.index
+1731565417.index
+2399834911.index
+2637963939.index
+575131508.index
+2907190672.index

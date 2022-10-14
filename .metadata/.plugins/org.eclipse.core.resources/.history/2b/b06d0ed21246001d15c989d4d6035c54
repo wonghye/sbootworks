@@ -1,0 +1,13 @@
+package com.boot.dto;
+
+import java.util.List;
+
+import lombok.Data;
+
+@Data
+public class PageResultDto<DTO, EN> {
+
+	private List<DTO> dtoList;
+	
+	public PageRequestDto<Page<EN> result, EN>
+}

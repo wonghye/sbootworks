@@ -1,0 +1,14 @@
+package com.boot.service;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.boot.repository.GuestbookRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor	// 주입을 사용하면 final 키워드 사용함
+@SpringBootTest
+public class GuestbookServiceTest {
+
+	private final GuestbookRepository repository;
+}

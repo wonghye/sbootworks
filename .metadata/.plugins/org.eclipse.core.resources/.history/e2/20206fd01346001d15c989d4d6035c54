@@ -1,0 +1,27 @@
+package com.boot.service;
+
+import com.boot.dto.GuestbookDto;
+import com.boot.entity.Guestbook;
+
+public interface GuestbookService {
+
+   //게시글 등록(추상 메소드)
+   Long register(GuestbookDto dto);
+   
+   //자바 8버전부터 구체 메소드 사용 가능(default 키워드로 가능)
+   default Guestbook dtoToEntity(GuestbookDto dto) {
+      Guestbook entity = Guestbook.builder()
+                              .gno(dto.getGno())
+                              .title(dto.getTitle())
+                              .content(dto.getContent())
+                              .writer(dto.getWriter())
+                              .build();
+      return entity;
+   }
+   
+   
+   
+   
+   
+   
+}

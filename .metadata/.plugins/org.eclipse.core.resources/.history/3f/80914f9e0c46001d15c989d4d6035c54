@@ -1,0 +1,14 @@
+package com.boot.service;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.boot.repository.GuestbookRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@SpringBootTest
+public class GuestbookServiceTest {
+
+	private fianl GuestbookRepository repository;
+}

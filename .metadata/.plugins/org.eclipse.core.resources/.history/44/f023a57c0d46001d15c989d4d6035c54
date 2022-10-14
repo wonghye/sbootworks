@@ -1,0 +1,29 @@
+package com.boot.service;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.boot.dto.GuestbookDto;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor	// 주입을 사용하면 final 키워드 사용함
+@SpringBootTest
+public class GuestbookServiceTest {
+
+	private final GuestbookService service;
+	
+	//새글 등록 테스트
+	@Test
+	public void testRegister() {
+		
+		GuestbookDto guestbookDto = GuestbookDto.builder()
+				.title("sample title....")
+				.content("sample content.....")
+				.writer("user0")
+				.build();
+		
+		System.out.println(service.register(guestbookDto));
+	}
+	
+}
