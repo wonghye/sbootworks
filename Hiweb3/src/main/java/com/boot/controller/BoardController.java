@@ -47,7 +47,10 @@ public class BoardController {
    //게시글 상세 보기
    @GetMapping("/read")
    public void read(@ModelAttribute("requestDto") PageRequestDto requestDto , Long bno, Model model) {
+	   //조회수 증가
+	   boardService.updateCount(bno);
 	   
+	   //게시글 보기
 	   BoardDto boardDto = boardService.get(bno);
 	   model.addAttribute("dto", boardDto);
    }
@@ -62,8 +65,23 @@ public class BoardController {
    @PostMapping("/register")
    public String register(BoardDto boardDto, 
 		   RedirectAttributes redirectAttributes,
-		   @AuthenticationPrincipal SecurityUser principal) {
+		   @AuthenticationPrincipal SecurityUser principal, 
+		   @RequestParam MultipartFile[] uploadFile) throws IllegalStateException, IOException {
+	   //파일 업로드
+	      //MultipartFile[]를 파라미터로 객체 사용
+	      for(MultipartFile file : uploadFile) {
+	         if(!file.isEmpty()) {
+	            FileDto dto = new FileDto(UUID.randomUUID().toString(),
+	                  file.getOriginalFilename(), file.getContentType());
+	            
+	            //파일 생성 - file 클래스의 객체는 논리적인 파일 이름임
+	            File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
+	            //실제 물리적인 파일로 전달해서 저장 
+	            file.transferTo(newFileName);
+	         }
+	      }
 	   
+	   //글쓰기
 	   boardDto.setWriterUserid(principal.getUsername());
 	   Long bno = boardService.register(boardDto);
 	   redirectAttributes.addFlashAttribute("msg", bno);
@@ -79,6 +97,11 @@ public class BoardController {
    }
  	
  	//글 수정
+ 	@PostMapping("/update")
+ 	public String modify(BoardDto boardDto) {
+ 		boardService.modify(boardDto);
+ 		return "redirect:list";
+ 	}
  	
 	
 	/*

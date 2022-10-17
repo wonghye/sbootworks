@@ -17,6 +17,7 @@ public class MemberServiceImpl implements MemberService{
 		@Autowired
 		private PasswordEncoder pwencoder;
 		
+		//회원가입
 		@Override
 		public void signup(Member member) {
 			
@@ -52,4 +53,14 @@ public class MemberServiceImpl implements MemberService{
 		public void delete(Member member) {
 		   memberRepo.delete(member);
 		}
+
+		//id 중복 확인
+		@Override
+		public int checkID(String userid) {
+			int value =  memberRepo.checkID(userid);
+			return value;
+		}
+
+		
+		
 }

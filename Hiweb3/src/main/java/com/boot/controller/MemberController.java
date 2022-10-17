@@ -6,9 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.entity.Member;
 import com.boot.service.MemberService;
+
+import net.bytebuddy.asm.MemberRemoval;
 
 
 @RequestMapping("/member/")
@@ -42,6 +45,14 @@ public class MemberController {
       memberService.signup(member);
       model.addAttribute("msg", "가입");
       return "member/result";
+   }
+   
+   //id중복확인
+   @GetMapping("checkID")
+   @ResponseBody
+   public int checkID(String userid) {
+	   int value = memberService.checkID(userid);
+	   return value;
    }
    
    //회원 정보 보기

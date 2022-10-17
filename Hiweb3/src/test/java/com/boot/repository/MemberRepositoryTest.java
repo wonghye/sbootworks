@@ -15,6 +15,7 @@ public class MemberRepositoryTest {
 	MemberRepository memberRepo;
 
 	//회원100명 생성
+	/*
 	@Test
 	public void insertMember() {
 		IntStream.rangeClosed(1, 100).forEach(i -> {
@@ -28,5 +29,5 @@ public class MemberRepositoryTest {
 			memberRepo.save(member);
 		});
 	}
-	
+	*/
 }

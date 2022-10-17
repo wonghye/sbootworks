@@ -18,7 +18,7 @@ public class BoardDto {
 	private String content;
 	private String writerUserid;	//작성자의 아이디
 	private String writerName;		//작성자의 이름
-	private Long cnt;		//작성자의 이름
+	private Long cnt = 0L;		//작성자의 이름
 	private LocalDateTime regDate;
 	private LocalDateTime modDate;
 	private int replyCount;			//해당 게시글의 댓글수

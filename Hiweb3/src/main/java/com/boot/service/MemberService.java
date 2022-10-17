@@ -11,4 +11,6 @@ public interface MemberService{
 	Member view(String userid); //회원 정보
 	
 	void delete(Member member); //회원 탈퇴
+	
+	int checkID(String userid); //id 중복 확인
 }
