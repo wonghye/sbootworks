@@ -2,13 +2,15 @@
 <aop-reference-model>
 <aop-project name="Hiweb2"/>
 <aop-project name="BootSecurity"/>
-<aop-project name="GuestBook"/>
-<aop-project name="HiWeb"/>
-<aop-project name="Chapter01"/>
 <aop-project name="Chapter02"/>
 <aop-project name="GuestBook2"/>
-<aop-project name="BootThymeleaf"/>
 <aop-project name="BootWeb1"/>
+<aop-project name="Hiweb3"/>
+<aop-project name="GuestBook"/>
+<aop-project name="HiWeb"/>
+<aop-project name="myweb"/>
+<aop-project name="Chapter01"/>
+<aop-project name="BootThymeleaf"/>
 <aop-project name="BootWeb2"/>
 <aop-project name="SpringJPA"/>
 </aop-reference-model>

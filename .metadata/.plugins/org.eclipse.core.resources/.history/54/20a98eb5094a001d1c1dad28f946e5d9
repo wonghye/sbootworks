@@ -1,6 +1,0 @@
-package com.boot.service;
-
-public class BoardServiceImpl implements BoardService{
-
-	
-}

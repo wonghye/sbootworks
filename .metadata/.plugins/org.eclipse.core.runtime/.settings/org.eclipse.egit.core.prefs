@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\guro-hi\\.git;C\:\\bootworks\\.git;C\:\\Users\\guro-hi\\git\\sbootworks\\.git;C\:\\bootworks\\GuestBook\\.git;C\:\\Users\\guro-hi\\git\\bootworks\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\guro-hi\\.git;C\:\\bootworks\\.git;C\:\\Users\\guro-hi\\git\\sbootworks\\.git;C\:\\bootworks\\GuestBook\\.git;C\:\\Users\\guro-hi\\git\\bootworks\\.git;
+GitRepositoriesView.GitDirectories=C\:\\Users\\guro-hi\\.git;C\:\\Dev\\bootworks\\.git;C\:\\bootworks\\.git;C\:\\Users\\guro-hi\\git\\sbootworks\\.git;C\:\\bootworks\\GuestBook\\.git;C\:\\Users\\guro-hi\\git\\bootworks\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Users\\guro-hi\\.git;.git;C\:\\bootworks\\.git;C\:\\Users\\guro-hi\\git\\sbootworks\\.git;C\:\\bootworks\\GuestBook\\.git;C\:\\Users\\guro-hi\\git\\bootworks\\.git;
 RepositoryGroups.uuids=
 RepositorySearchDialogSearchPath=C\:\\Users\\guro-hi\\git
 core_autoIgnoreDerivedResources=false

@@ -1,5 +1,0 @@
-package com.boot.repository.search;
-
-public interface SearchBoardRepository {
-
-}

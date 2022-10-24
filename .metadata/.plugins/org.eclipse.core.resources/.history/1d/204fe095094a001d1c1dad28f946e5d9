@@ -1,7 +1,0 @@
-package com.boot.service;
-
-public interface BoardService {
-
-	//게시글 등록
-	Long register(BoardDto dto);
-}

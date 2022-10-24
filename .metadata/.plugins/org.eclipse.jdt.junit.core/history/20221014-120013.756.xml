@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ReplyRepositoryTest (1)" project="Hiweb3" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.boot.repository.ReplyRepositoryTest" time="1.775" displayname="ReplyRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.ReplyRepositoryTest]">
-    <testcase name="insertReply" classname="com.boot.repository.ReplyRepositoryTest" time="1.696" displayname="insertReply()" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.ReplyRepositoryTest]/[method:insertReply()]"/>
-    <testcase name="testListByBoard" classname="com.boot.repository.ReplyRepositoryTest" time="0.078" displayname="testListByBoard()" uniqueid="[engine:junit-jupiter]/[class:com.boot.repository.ReplyRepositoryTest]/[method:testListByBoard()]"/>
-  </testsuite>
-</testrun>

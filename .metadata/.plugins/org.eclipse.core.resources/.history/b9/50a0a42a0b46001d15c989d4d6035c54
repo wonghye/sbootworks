@@ -1,9 +1,0 @@
-package com.boot.service;
-
-import com.boot.dto.GuestbookDto;
-
-public interface GuestbookService {
-
-	//게시글 등록
-	Long register(GuestbookDto dto);
-}

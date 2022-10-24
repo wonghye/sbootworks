@@ -1,8 +1,0 @@
-package com.boot.repository;
-
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-public class ReplyRepositoryTest {
-
-}
