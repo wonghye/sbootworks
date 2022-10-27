@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.shop.config.BaseEntity;
 import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 
@@ -18,19 +19,17 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@Setter
-@Getter
+@Getter @Setter
 @Entity
-public class Member {
+public class Member extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="member_id")
+	@Column(name = "member_id")
 	private Long id;
 	
 	private String name;
 	
-	//중복 체크
 	@Column(unique = true)
 	private String email;
 	
@@ -38,16 +37,15 @@ public class Member {
 	
 	private String address;
 	
-	//문자형으로 출력
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	//회원 생성 메소드
-	public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
+	//회원 생성 메서드
+	public static Member createMember(MemberFormDto memberFormDto,
+			PasswordEncoder passwordEncoder) {//비밀번호 암호화
 		Member member = new Member();
 		member.setName(memberFormDto.getName());
 		member.setEmail(memberFormDto.getEmail());
-		//비밀번호 암호화
 		String password = passwordEncoder.encode(memberFormDto.getPassword());
 		member.setPassword(password);
 		member.setAddress(memberFormDto.getAddress());
@@ -56,3 +54,8 @@ public class Member {
 		return member;
 	}
 }
+
+
+
+
+

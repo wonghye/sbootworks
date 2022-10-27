@@ -14,10 +14,10 @@ import com.shop.constant.Role;
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 
-
+//@Transactional
 @SpringBootTest
 public class MemberServiceTest {
-
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -34,17 +34,15 @@ public class MemberServiceTest {
 		return Member.createMember(memberFormDto, pwEncoder);
 	}
 	
-	/*
-	//회원가입
+	//회원 가입
 	@Test
 	public void saveMemberTest() {
 		Member member = createMember();
 		memberService.saveMember(member);
 	}
-	*/
 	
-	//이메일 중복 체크
-	@Test
+	//이메일 중복 체크 
+	/*@Test
 	public void saveDuplicateMemberTest() {
 		Member member1 = createMember();
 		Member member2 = createMember();
@@ -55,5 +53,10 @@ public class MemberServiceTest {
 		});
 		
 		assertEquals("이미 가입된 회원입니다.", e.getMessage());
-	}
+	}*/
+	
+	
+	
+	
+	
 }

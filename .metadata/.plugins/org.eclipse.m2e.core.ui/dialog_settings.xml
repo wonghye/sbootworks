@@ -12,6 +12,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Dev\hishop"/>
 			<item value="C:\Hiweb2 (1)"/>
 			<item value="C:\Dev\bootworks\hiWeb2"/>
 			<item value="C:\bootworks\GuestBook"/>
