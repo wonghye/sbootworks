@@ -38,19 +38,6 @@ public class MainController {
 		
 	}
 	
-	//상품 상세 보기
-	@GetMapping("/item/{itemId}")
-	public String itemDtl(@PathVariable("itemId") Long itemId, Model model) {
-		try {
-			ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-			model.addAttribute("itemFormDto", itemFormDto);
-		}catch(Exception e) {
-			model.addAttribute("errorMessage", "존재하지 않는 상품입니다.");
-			model.addAttribute("itemFormDto", new ItemFormDto());
-			return "item/itemForm";
-		}
-		
-		return "item/itemForm";
-	}
+	
 	
 }

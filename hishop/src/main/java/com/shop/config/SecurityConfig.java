@@ -7,14 +7,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		//인증
 		http.formLogin()
 			.loginPage("/members/login")
@@ -28,8 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		//권한
 		http.authorizeRequests()
-			.antMatchers("/", "/members/**").permitAll()   //인증되지 않은 모든 사용자 접근
-			.antMatchers("/admin/**").hasRole("ADMIN");   //ADMIN 권한을 가진 사용자만 접근
+			.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll() 
+			.mvcMatchers("/", "/members/**", "/item/**", "/images/**" ).permitAll()   //인증되지 않은 모든 사용자 접근
+			.mvcMatchers("/admin/**").hasRole("ADMIN")   //ADMIN 권한을 가진 사용자만 접근
+			.anyRequest().authenticated();
+		
+		//ajax 통신 핸들링
+		http.exceptionHandling()
+			.authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+		
+		return http.build();
 	}
 	
 	@Bean
