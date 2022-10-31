@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <meta charset="UTF-8">
-	<div th:fragment="header">
-		<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+   <div th:fragment="header">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,9 @@
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                     <a class="nav-link" th:href="@{/admin/items}">상품 관리</a>
                 </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/cart}">장바구니</a>
+                </li>
                 <li class="nav-item"  sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{/orders}">주문내역</a>
                 </li>
@@ -30,14 +33,13 @@
                     <a class="nav-link" th:href="@{/members/logout}">로그아웃</a>
                 </li>
             </ul>
-            <!-- 검색폼 -->
             <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
                <input name="searchQuery" class="form-control mr-sm-2" type="search"
                      placeholder="Search" aria-label="Search">
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
-            
         </div>
     </nav>
-	</div>
+    
+   </div>
 </html>
