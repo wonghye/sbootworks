@@ -38,12 +38,13 @@ public class OrderService {
    private final ItemImgRepository itemImgRepo;
    
    //주문하기
-   public Long order(OrderDto orderDto, String email) {
+   public Long order(OrderDto orderDto, String name) {
       //주문할 상품 조회
       Item item = itemRepo.findById(orderDto.getItemId()).orElseThrow(EntityNotFoundException::new);
       
       //로그인한 회원 가져오기
-      Member member = memberRepo.findByEmail(email);
+      //Member member = memberRepo.findByEmail(email);
+      Member member = memberRepo.findByName(name);
       
       //주문할 상품 리스트를 이용
       List<OrderItem> orderItemList = new ArrayList<>();
@@ -58,12 +59,14 @@ public class OrderService {
    }
    
    //주문내역
-   public Page<OrderHistDto> getOrderList(String email, Pageable pageable){
+   public Page<OrderHistDto> getOrderList(String name, Pageable pageable){
       //주문 조회
-      List<Orders> orders = orderRepo.findOrders(email, pageable);
+      List<Orders> orders = orderRepo.findOrders(name, pageable);
+      //List<Orders> orders = orderRepo.findOrders(email, pageable);
       
       //주문 총 개수
-      Long totalCount = orderRepo.countOrder(email);
+      //Long totalCount = orderRepo.countOrder(email);
+      Long totalCount = orderRepo.countOrder(name);
       
       //주문 리스트를 순회하면서 주문 내역 페이지에 전달할 dto 생성
       List<OrderHistDto> orderHistDtos = new ArrayList<>();
@@ -85,8 +88,9 @@ public class OrderService {
    }
    //주문 취소 전 로그인한 사용자와 주문 데이터 생상한 사용자가 같은지 검사
    @Transactional(readOnly = true)
-   public boolean validateOrder(Long orderId, String email) {
-      Member curMember = memberRepo.findByEmail(email); //현재 로그인 한 회원
+   public boolean validateOrder(Long orderId, String name) {
+	   Member curMember = memberRepo.findByName(name); //현재 로그인 한 회원
+      //Member curMember = memberRepo.findByEmail(email); //현재 로그인 한 회원
       Orders order = orderRepo.findById(orderId)
             .orElseThrow(EntityNotFoundException::new);
       
@@ -107,8 +111,9 @@ public class OrderService {
    }
    
    //장바구니 상품 주문하기
-   public Long orders(List<OrderDto> orderDtoList, String email) {
-	   Member member = memberRepo.findByEmail(email);
+   public Long orders(List<OrderDto> orderDtoList, String name) {
+	   Member member = memberRepo.findByName(name);
+	   //Member member = memberRepo.findByEmail(email);
 	   List<OrderItem> orderItemList = new ArrayList<>();
 	   
 	   for(OrderDto orderDto : orderDtoList) {

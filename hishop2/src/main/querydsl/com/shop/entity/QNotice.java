@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -16,6 +17,8 @@ import com.querydsl.core.types.Path;
 public class QNotice extends EntityPathBase<Notice> {
 
     private static final long serialVersionUID = 1043649528L;
+
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QNotice notice = new QNotice("notice");
 
@@ -28,11 +31,15 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public final NumberPath<Long> gno = createNumber("gno", Long.class);
 
+    public final QMember member;
+
     //inherited
     public final StringPath modifiedBy = _super.modifiedBy;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
+
+    public final ListPath<Reply, QReply> replyList = this.<Reply, QReply>createList("replyList", Reply.class, QReply.class, PathInits.DIRECT2);
 
     public final StringPath title = createString("title");
 
@@ -42,15 +49,24 @@ public class QNotice extends EntityPathBase<Notice> {
     public final StringPath writer = createString("writer");
 
     public QNotice(String variable) {
-        super(Notice.class, forVariable(variable));
+        this(Notice.class, forVariable(variable), INITS);
     }
 
     public QNotice(Path<? extends Notice> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QNotice(PathMetadata metadata) {
-        super(Notice.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QNotice(PathMetadata metadata, PathInits inits) {
+        this(Notice.class, metadata, inits);
+    }
+
+    public QNotice(Class<? extends Notice> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
     }
 
 }

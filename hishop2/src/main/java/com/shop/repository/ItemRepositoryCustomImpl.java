@@ -22,6 +22,7 @@ import com.shop.entity.Item;
 import com.shop.entity.QItem;
 import com.shop.entity.QItemImg;
 
+
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 
    private JPAQueryFactory queryFactory;  //동적으로 쿼리 생성

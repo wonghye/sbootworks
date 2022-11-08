@@ -2,9 +2,72 @@
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
      layout:decorate="~{layouts/layout1}">
-     
+<head>    
    <meta charset="UTF-8">
-   
+
+<th:block layout:fragment="script">
+<script>
+	$(document).ready(function(){
+		
+		let gno = [[${dto.gno}]]
+		
+		//댓글이 추가될 영역
+		let listGroup = $(".replyList");
+		
+		//특정한 게시글의 댓글을 처리하는 함수
+		function loadJSONData(){
+			$.getJSON('/replies/notice/' + gno, function(arr){
+				console.log(arr);
+				
+				let str = "";
+				$(".replyCount").html(" Reply Count " + arr.length);
+				
+				$.each(arr, function(idx, reply){
+					console.log(reply);
+					str += '<div class="card">'
+					str += '<div class="card-body" data-rno="'+ reply.rno +'">'+reply.rno;
+					str += '<h5 class="card-title">'+reply.text+'</h5>';
+					str += '<h6 class="card-subtitle mb-2 text-muted">'+reply.replyer+'</h6>';
+					str += '<p class="card-text">'+formatTime(reply.regDate)+'</p>';
+					str += '</div></div>';
+				});
+				
+				listGroup.html(str); //댓글 목록
+			});
+		}
+		
+		//댓글 등록 처리(저장)
+		$(".replySave").click(function(){
+			
+			//댓글 객체 생성
+			let reply = {
+				gno: gno,
+				text: $('input[name="text"]').val(),
+				replyer: $('input[name="replyer"]').val()
+			}
+			console.log(reply);
+			
+			$.ajax({
+				url: '/replies/',
+				method: 'post',
+				data: JSON.stringify(reply),
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				success: function(data){
+					console.log(data);
+					
+					let newRno = parseInt(data);
+					
+					alert(newRno + "번 댓글이 등록되었습니다.");
+					//modal.modal('hide');
+					loadJSONData();
+				}
+			})
+		});//댓글 등록 끝
+});	   
+</script>
+</th:block>
+</head>   
    <div layout:fragment="content" class="content">
       <h2>상세 보기</h2>
       <form th:action="@{/notice/update}" method="post">
@@ -36,5 +99,44 @@
          <a th:href="@{/notice/list(page=${requestDto.page},
             type=${requestDto.type}, keyword=${requestDto.keyword})}" class="btn btn-primary">목록</a>
       </form>
-   </div>
+      
+      <!-- 댓글 리스트  -->
+	<div class="card" style="width: 18rem;">
+	  <div class="card-header bi bi-chat-dots">
+	  	Comments
+	  </div>
+	  <ul class="list-group list-group-flush">
+	    <li class="list-group-item">
+	    	<span>
+		    	<span style="font-size:samll;"></span>
+		    	<span style="font-size:samll;"></span>
+		    	<button class="badge bi bi-pencil-square"> 수정</button>
+	            <button class="badge bi bi-trash"> 삭제</button>
+            </span>
+    	</li>
+	  </ul>
+	</div>
+      
+      
+      <!-- 댓글 쓰기 -->
+	<div class="card">
+	  <div class="card-header bi bi-chat-right-dots">Write a Comment</div>
+	  
+	  <form action="">
+	  	<input type="hidden" id="noticeGno" value="">
+		  <div class="card-body">
+		  	<textarea id="reply" class="form-control" rows="4" placeholder="댓글을 입력하세요"></textarea>
+		  </div>
+		  
+		  <div class="card-footer text-muted">
+		    <button type="button" id="btn-comment-save"
+		    class="btn btn-outline-primary bi bi-pencil-square replySave">등록</button>
+		  </div>
+		  <div class="card-body" style="font-size: small">
+		  	<a href="/members/login">로그인</a>을 하시면 댓글을 등록할 수 있습니다.
+		  </div>
+      </form>
+	</div>
+
+</div>
 </html>

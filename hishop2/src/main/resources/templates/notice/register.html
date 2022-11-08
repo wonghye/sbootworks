@@ -21,8 +21,9 @@
          <div class="form-group row">
             <label>작성자</label>
              <div class="col-sm-3" sec:authorize="isAuthenticated()">
-                <span sec:authentication="name"></span>
+             <!--인증시 사용된 객체의 Username (ID)-->
              </div>
+             <input type="text" name="writer" class="form-control" placeholder="작성자 입력" th:value="${#authentication.name}" readonly>
             <!-- <input type="text" name="writer" class="form-control" placeholder="작성자 입력"> -->
          </div>
          <button type="submit" class="btn btn-primary">등록</button>

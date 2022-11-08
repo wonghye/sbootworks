@@ -17,4 +17,5 @@ public class NoticeDto {
    private String content;
    private String writer;
    private LocalDateTime regDate, modDate;
+   private int replyCount;
 }

@@ -9,7 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import com.shop.config.BaseEntity;
 import com.shop.constant.ItemSellStatus;
@@ -39,7 +38,6 @@ public class Item extends BaseEntity{
    @Column(nullable = false)
    private int stockNumber; //재고 수량
    
-   @Lob   //Large object
    @Column(nullable = false)
    private String itemDetail; //상세 설명
    

@@ -49,10 +49,11 @@ import org.springframework.validation.BindingResult;
             return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
          }
          
-         String email = principal.getName();   //로그인한 회원
+         String name = principal.getName();   //로그인한 회원
+         //String email = principal.getName();   //로그인한 회원
          Long orderId;   // 주문번호 
          try {
-         orderId = orderService.order(orderDto, email);   //주문 로직 호출
+         orderId = orderService.order(orderDto, name);   //주문 로직 호출
          }catch(Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
          }

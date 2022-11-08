@@ -36,11 +36,12 @@ public class CartService {
 	private final OrderService orderService;
 
 	//장바구니 생성(담기)
-	public Long addCart(CartItemDto cartItemDto, String email) {
+	public Long addCart(CartItemDto cartItemDto, String name) {
 		//상품 조회 및 회원 조회
 		Item item = itemRepo.findById(cartItemDto.getItemId())
 				.orElseThrow(EntityNotFoundException::new);
-		Member member = memberRepo.findByEmail(email);
+		//Member member = memberRepo.findByEmail(email);
+		Member member = memberRepo.findByName(name);
 
 		//장바구니 엔티티 조회
 		Cart cart = cartRepo.findByMemberId(member.getId());
@@ -69,9 +70,10 @@ public class CartService {
 
 	//장바구니 목록 보기
 	@Transactional(readOnly = true)
-	public List<CartDetailDto> getCartList(String email){
+	public List<CartDetailDto> getCartList(String name){
 		List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
-		Member member = memberRepo.findByEmail(email);
+		//Member member = memberRepo.findByEmail(email);
+		Member member = memberRepo.findByName(name);
 
 		Cart cart = cartRepo.findByMemberId(member.getId());
 
@@ -86,8 +88,9 @@ public class CartService {
 	
 	//로그인한 사용자와 장바구니 상품 데이터를 생성한 사용자가 같은지 검사
 	 @Transactional(readOnly = true)
-	   public boolean validateCartItem(Long cartItemId, String email) {
-	      Member curMember = memberRepo.findByEmail(email); //현재 로그인 한 회원
+	   public boolean validateCartItem(Long cartItemId, String name) {
+		 Member curMember = memberRepo.findByName(name); //현재 로그인 한 회원
+		 //Member curMember = memberRepo.findByEmail(email); //현재 로그인 한 회원
 	      CartItem cartItem = cartItemRepo.findById(cartItemId)
 	    		  .orElseThrow(EntityNotFoundException::new);
 	      Member savedMember = cartItem.getCart().getMember();	//db에 저장된 회원
@@ -112,7 +115,7 @@ public class CartService {
 	 }
 	 
 	 //장바구니 품목 주문하기
-	 public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email) {
+	 public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String name) {
 		 //orderDtoList 생성
 		 List<OrderDto> orderDtoList = new ArrayList<>();
 		 
@@ -134,7 +137,7 @@ public class CartService {
 			 cartItemRepo.delete(cartItem);
 		 }
 		 
-		 Long orderId = orderService.orders(orderDtoList, email);
+		 Long orderId = orderService.orders(orderDtoList, name);
 		 return orderId;
 	 }
 	 

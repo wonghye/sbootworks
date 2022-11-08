@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.shop.dto.NoticeDto;
+import com.shop.dto.NoticeResponseDto;
 import com.shop.dto.PageRequestDto;
 import com.shop.dto.PageResultDto;
 import com.shop.entity.Notice;
@@ -23,10 +24,10 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor //생성자 주입(final 키워드 사용)
 @Log4j2
 @Service
-public class NoticeServiceImpl implements NoticeService{
+public abstract class NoticeServiceImpl {
 
-   private final NoticeRepository repository;
-   
+   //private final NoticeRepository repository;
+   /*
    //글 등록
    @Override
    public Long register(NoticeDto dto) {
@@ -56,13 +57,14 @@ public class NoticeServiceImpl implements NoticeService{
 
 	//게시글 상세보기
 	@Override
-	public NoticeDto read(Long gno) {
+	public NoticeResponseDto read(Long gno) {
 		Optional<Notice> result  = repository.findById(gno);
 		
 		//찾아온 객체가 있으면 entity to dto를 호출 아니면 null 반환(삼항 연산자)
 		return result.isPresent() ? entityToDto(result.get()) : null;
 	}
-	
+	*/
+   
 	//검색 처리
 	private BooleanBuilder getSearch(PageRequestDto requestDto) {
 		String type = requestDto.getType();
